@@ -41,7 +41,7 @@ We welcome contributions from the open-source community. If you'd like to contri
 
 ## License
 
-Worldly is released under the [MIT License](https://example.com/license).
+Worldly is released under no license as of now.
 
 ## Contact
 
