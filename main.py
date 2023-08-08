@@ -1,25 +1,42 @@
 # read input from user
-letters = input("Please input the letters separated by commas(,): ")
-# # store in a list
-letters = letters.split(',')
-# # print(letters)
-
+def readInput():
+    inputLetters = input("Please input the letters:").strip(' ')
+    # store in a list
+    letters = []
+    for letter in inputLetters:
+        letters.append(letter)
+    return letters
 # words
+def readfromFile():
+    fhand = open('words.txt')
+    words = []
 
-words = ['app', 'eat', 'screnvmefnusdj']
-
+    for line in fhand:
+        word = line.strip('\n')
+        words.append(word)
+    return words
 # # iterate through it finding only those that are present
-lst=[]
-for word in words:
-    #  use this as flag
-    is_present = True
-    for letter in letters:
-        if letter not in word:
-            is_present = False
-    if is_present:
-        lst.append(word)
-# 
-print(lst)
-# # output the data
-# hand = open('README.md')
-# print(hand)
+def findWords(words, letters):
+    lst = []
+    for word in words:
+        if len(word) <= len(letters):
+            #  use this as flag
+            is_present = True
+            for letter in letters:
+                if letter not in word:
+                    is_present = False
+            if is_present:
+                lst.append(word)
+    return lst
+# printing the output
+def output(lst):
+    count = 0
+    for l in lst:
+        if len(l) < 1:
+           print('no words')
+        else:
+            count += 1
+            print(f"{count} : {l}")
+
+if __name__ == '__main__':
+    output(findWords(readfromFile(), readInput()))
